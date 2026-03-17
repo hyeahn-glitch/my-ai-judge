@@ -12,7 +12,7 @@ api_key = st.sidebar.text_input("Google API Key를 입력하세요", type="passw
 
 if api_key:
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('gemini-3-flash') # 속도가 빠른 플래시 모델 추천
+   model = genai.GenerativeModel('models/gemini-3-flash') # 속도가 빠른 플래시 모델 추천
 
     # 3. 파일 업로드 및 심사 기준 입력
     col1, col2 = st.columns(2)
