@@ -1,0 +1,467 @@
+<title>58kg 로드맵</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+:root{
+  --paper:#F7F8F6; --raise:#FFFFFF; --ink:#1A1F1C; --ink-2:#4A534E; --muted:#7B837E;
+  --rule:#DEE3DD; --rule-2:#EBEEE9;
+  --pine:#2E6B4F; --pine-soft:#4E9070; --pine-wash:#E8F0EB;
+  --amber:#9C6520; --amber-wash:#F6EEE1;
+  --brick:#A33A3A; --brick-wash:#F7E9E9;
+  --plum:#6B4A7A; --plum-wash:#EFE9F2;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#131714; --raise:#1B211D; --ink:#E8EDE9; --ink-2:#B4BDB7; --muted:#828C86;
+    --rule:#2C332E; --rule-2:#222823;
+    --pine:#6FBF93; --pine-soft:#4E9070; --pine-wash:#1B2A22;
+    --amber:#D9A05B; --amber-wash:#2A2318;
+    --brick:#D97A7A; --brick-wash:#2B1C1C;
+    --plum:#B694C4; --plum-wash:#241D29;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#131714; --raise:#1B211D; --ink:#E8EDE9; --ink-2:#B4BDB7; --muted:#828C86;
+  --rule:#2C332E; --rule-2:#222823;
+  --pine:#6FBF93; --pine-soft:#4E9070; --pine-wash:#1B2A22;
+  --amber:#D9A05B; --amber-wash:#2A2318;
+  --brick:#D97A7A; --brick-wash:#2B1C1C;
+  --plum:#B694C4; --plum-wash:#241D29;
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:"Noto Sans KR",system-ui,-apple-system,sans-serif;
+  font-weight:400; line-height:1.7; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:860px; margin:0 auto; padding-inline:20px; padding-block:44px 80px}
+h1,h2,h3{font-family:"Gowun Batang","Noto Serif KR",Georgia,serif; text-wrap:balance; margin:0}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace; font-variant-numeric:tabular-nums}
+.eyebrow{
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--muted); font-weight:500; font-family:"JetBrains Mono",monospace;
+}
+
+/* ---------- masthead ---------- */
+.mast{border-bottom:2px solid var(--ink); padding-bottom:22px; margin-bottom:34px}
+.mast h1{font-size:clamp(30px,7vw,46px); line-height:1.15; font-weight:700; margin:6px 0 10px}
+.mast p{color:var(--ink-2); margin:0; font-size:15px; max-width:60ch}
+
+.figs{display:grid; grid-template-columns:repeat(auto-fit,minmax(128px,1fr)); gap:1px;
+  background:var(--rule); border:1px solid var(--rule); margin:26px 0 12px}
+.fig{background:var(--raise); padding:16px 14px}
+.fig .k{font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);
+  font-family:"JetBrains Mono",monospace}
+.fig .v{font-family:"JetBrains Mono",monospace; font-variant-numeric:tabular-nums;
+  font-size:26px; font-weight:700; line-height:1.25; margin-top:5px}
+.fig .u{font-size:13px; font-weight:400; color:var(--muted)}
+.fig .n{font-size:12px; color:var(--muted); margin-top:2px}
+.fig.hi .v{color:var(--pine)}
+
+section{margin-top:52px}
+section > h2{font-size:23px; font-weight:700; margin-bottom:4px}
+.lede{color:var(--ink-2); font-size:14.5px; margin:0 0 20px; max-width:62ch}
+
+/* ---------- tables ---------- */
+.tw{overflow-x:auto; border:1px solid var(--rule); background:var(--raise)}
+table{border-collapse:collapse; width:100%; min-width:440px; font-size:14px}
+th,td{padding:10px 13px; text-align:left; border-bottom:1px solid var(--rule-2)}
+thead th{
+  font-size:10.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted);
+  font-family:"JetBrains Mono",monospace; font-weight:500;
+  border-bottom:1px solid var(--rule); white-space:nowrap;
+}
+tbody tr:last-child td{border-bottom:none}
+td.num,th.num{text-align:right; font-family:"JetBrains Mono",monospace; font-variant-numeric:tabular-nums}
+tr.mark td{background:var(--pine-wash); font-weight:700}
+tr.mark td:first-child{box-shadow:inset 3px 0 0 var(--pine)}
+
+/* ---------- phase spine ---------- */
+.phase{
+  border:1px solid var(--rule); border-left:4px solid var(--stripe,var(--pine));
+  background:var(--raise); padding:20px 22px; margin-bottom:14px;
+}
+.phase-h{display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 14px; margin-bottom:6px}
+.phase-h .no{font-family:"JetBrains Mono",monospace; font-size:12px; font-weight:700;
+  color:var(--stripe,var(--pine)); letter-spacing:.06em}
+.phase-h h3{font-size:19px; font-weight:700}
+.phase-h .dur{margin-left:auto; font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--muted)}
+.phase-dates{font-family:"JetBrains Mono",monospace; font-size:13px; color:var(--ink-2); margin-bottom:14px}
+.phase-goal{
+  display:flex; flex-wrap:wrap; align-items:baseline; gap:8px;
+  font-family:"JetBrains Mono",monospace; font-variant-numeric:tabular-nums;
+  font-size:20px; font-weight:700; margin-bottom:12px;
+}
+.phase-goal .arrow{color:var(--muted); font-weight:400}
+.phase-goal .rate{font-size:12px; font-weight:400; color:var(--muted);
+  font-family:"Noto Sans KR",sans-serif; margin-left:4px}
+.phase p{margin:0 0 10px; font-size:14.5px; color:var(--ink-2)}
+.phase p:last-child{margin-bottom:0}
+.phase strong{color:var(--ink); font-weight:700}
+.job{
+  display:inline-block; font-size:12px; font-weight:500; padding:3px 9px;
+  background:var(--wash,var(--pine-wash)); color:var(--stripe,var(--pine));
+  margin-bottom:12px; letter-spacing:.02em;
+}
+
+/* ---------- chart ---------- */
+.chart{border:1px solid var(--rule); background:var(--raise); padding:18px 16px 12px; margin:20px 0}
+.chart figcaption{font-size:12.5px; color:var(--muted); margin-top:10px; line-height:1.6}
+svg{display:block; width:100%; height:auto; max-width:100%}
+
+/* ---------- cycle ---------- */
+.cyc{display:grid; gap:1px; background:var(--rule); border:1px solid var(--rule)}
+.cyc-row{background:var(--raise); display:grid; grid-template-columns:88px 1fr; gap:0}
+.cyc-lab{
+  padding:12px 13px; font-family:"JetBrains Mono",monospace; font-size:12px;
+  color:var(--muted); border-right:1px solid var(--rule-2); display:flex; align-items:center;
+}
+.cyc-bars{display:flex; padding:8px 10px; gap:6px; flex-wrap:wrap}
+.bar{flex:1 1 150px; padding:9px 12px; font-size:13px; line-height:1.5}
+.bar b{display:block; font-family:"JetBrains Mono",monospace; font-size:11px;
+  letter-spacing:.06em; margin-bottom:2px}
+.bar.push{background:var(--pine-wash); color:var(--ink)}
+.bar.push b{color:var(--pine)}
+.bar.hold{background:var(--plum-wash); color:var(--ink)}
+.bar.hold b{color:var(--plum)}
+
+/* ---------- daily rules ---------- */
+.rules{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1px;
+  background:var(--rule); border:1px solid var(--rule)}
+.rule{background:var(--raise); padding:15px 16px}
+.rule .k{font-size:12px; color:var(--muted); margin-bottom:3px}
+.rule .v{font-family:"JetBrains Mono",monospace; font-variant-numeric:tabular-nums;
+  font-size:19px; font-weight:700; line-height:1.3}
+.rule .n{font-size:12px; color:var(--muted); margin-top:3px; line-height:1.55}
+
+/* ---------- risk ---------- */
+.risk{border:1px solid var(--rule); border-top:3px solid var(--sig,var(--amber));
+  background:var(--raise); padding:17px 19px; margin-bottom:12px}
+.risk-h{display:flex; flex-wrap:wrap; gap:8px 12px; align-items:baseline; margin-bottom:8px}
+.risk-h h3{font-size:16px; font-weight:700}
+.risk-h .when{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--muted); margin-left:auto}
+.risk p{margin:0 0 8px; font-size:14px; color:var(--ink-2)}
+.risk p:last-child{margin-bottom:0}
+.risk .do{font-size:14px; color:var(--ink)}
+.risk .do b{color:var(--sig,var(--amber))}
+
+/* ---------- verdict ---------- */
+.verdict{border:2px solid var(--ink); background:var(--raise); padding:24px 24px}
+.verdict h2{font-size:20px; margin-bottom:14px}
+.vlist{display:grid; gap:12px; margin:0; padding:0; list-style:none}
+.vlist li{display:grid; grid-template-columns:26px 1fr; gap:12px; font-size:14.5px; align-items:start}
+.vlist .m{font-family:"JetBrains Mono",monospace; font-size:15px; font-weight:700; color:var(--pine); line-height:1.55}
+.vlist .m.x{color:var(--brick)}
+
+.foot{margin-top:56px; padding-top:18px; border-top:1px solid var(--rule);
+  font-size:12.5px; color:var(--muted); line-height:1.75}
+.foot code{font-family:"JetBrains Mono",monospace; font-size:11.5px;
+  background:var(--rule-2); padding:1px 5px}
+
+@media (max-width:540px){
+  .cyc-row{grid-template-columns:1fr}
+  .cyc-lab{border-right:none; border-bottom:1px solid var(--rule-2); padding-bottom:8px}
+  .phase{padding:17px 16px}
+  .verdict{padding:20px 17px}
+}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="eyebrow">체성분 재구성 계획 · 2026.09.11 수립</div>
+  <h1>58 kg 로드맵</h1>
+  <p>마운자로 단약 후 <strong>잔여 약효가 사라지는 구간</strong>을 통과하면서 체지방 3.9 kg를 빼고
+     골격근 21.7 kg를 지키는 14주 계획. 체중이 아니라 체성분으로 판정한다.</p>
+
+  <div class="figs">
+    <div class="fig"><div class="k">현재</div><div class="v">62.6<span class="u"> kg</span></div><div class="n">9/10 공복</div></div>
+    <div class="fig hi"><div class="k">목표</div><div class="v">58.0<span class="u"> kg</span></div><div class="n">체지방률 30.9 %</div></div>
+    <div class="fig"><div class="k">감량폭</div><div class="v">4.0<span class="u"> kg</span></div><div class="n">전량 지방</div></div>
+    <div class="fig"><div class="k">도달 예상</div><div class="v">12/13</div><div class="n">14주 · 오차 ±3주</div></div>
+  </div>
+</header>
+
+<section>
+  <h2>도착점의 몸</h2>
+  <p class="lede">제지방량 40.1 kg를 그대로 지킨다는 전제로 계산한 값이다.
+     체중이 같아도 근육을 잃으면 이 표는 성립하지 않는다.</p>
+  <div class="tw">
+    <table>
+      <thead>
+        <tr><th>시점</th><th class="num">체중</th><th class="num">체지방</th><th class="num">체지방률</th><th>판정</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>현재 (8/30 인바디)</td><td class="num">61.9</td><td class="num">21.8</td><td class="num">35.2 %</td><td>비만</td></tr>
+        <tr><td>1단계 종료</td><td class="num">61.1</td><td class="num">21.0</td><td class="num">34.4 %</td><td>비만</td></tr>
+        <tr><td>60 kg 돌파</td><td class="num">60.0</td><td class="num">19.9</td><td class="num">33.2 %</td><td>비만 경계</td></tr>
+        <tr><td>2단계 종료</td><td class="num">58.4</td><td class="num">18.3</td><td class="num">31.3 %</td><td>경도비만</td></tr>
+        <tr class="mark"><td>목표 도달</td><td class="num">58.0</td><td class="num">17.9</td><td class="num">30.9 %</td><td>경도비만 하단</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>3단계 로드맵</h2>
+  <p class="lede">단계를 나누는 기준은 달력이 아니라 <strong>약물 농도</strong>다.
+     잔여 티르제파타이드가 남아 있는 동안과 완전히 빠진 뒤는 다른 게임이다.</p>
+
+  <div class="phase" style="--stripe:var(--amber); --wash:var(--amber-wash)">
+    <div class="phase-h">
+      <span class="no">1단계</span><h3>약물 소실기</h3>
+      <span class="dur">3.4주</span>
+    </div>
+    <div class="phase-dates">2026-09-11 → 10-05</div>
+    <span class="job">이 구간의 임무 : 감량이 아니라 습관 정착</span>
+    <div class="phase-goal">62.0 <span class="arrow">→</span> 61.1 <span class="rate">주 0.25 kg</span></div>
+    <p>남은 약효 <strong class="mono">1.03 mg</strong>가 이 기간에 <strong class="mono">0.03 mg</strong>까지 떨어진다.
+       식욕 억제와 위 배출 지연이 동시에 풀리므로, <strong>같은 의지로도 더 먹게 된다.</strong></p>
+    <p>여기서 욕심내면 전부 무너진다. 목표는 체중 숫자가 아니라
+       <strong>1,300~1,400 kcal · 단백질 80 g · 8,000보를 약 없이 지켜내는 것</strong>이다.
+       이걸 해내면 나머지 11주는 실행 문제일 뿐이다.</p>
+  </div>
+
+  <div class="phase" style="--stripe:var(--pine); --wash:var(--pine-wash)">
+    <div class="phase-h">
+      <span class="no">2단계</span><h3>본격 감량기</h3>
+      <span class="dur">7.9주</span>
+    </div>
+    <div class="phase-dates">2026-10-06 → 11-30</div>
+    <span class="job">이 구간의 임무 : 지방 2.8 kg 제거</span>
+    <div class="phase-goal">61.1 <span class="arrow">→</span> 58.4 <span class="rate">주 0.35 kg</span></div>
+    <p>약효가 완전히 없는 상태에서 습관만으로 굴러가는 구간.
+       계획 전체에서 <strong>가장 길고 가장 많이 빠지는 구간</strong>이다.</p>
+    <p>걸음을 <strong class="mono">10,000보</strong>로 올린다. 섭취는 그대로 둔다 —
+       적자는 덜 먹어서가 아니라 더 움직여서 만든다. 10월 말 <strong>60 kg 벽</strong>을 넘는 것이 중간 관문.</p>
+  </div>
+
+  <div class="phase" style="--stripe:var(--plum); --wash:var(--plum-wash)">
+    <div class="phase-h">
+      <span class="no">3단계</span><h3>마무리</h3>
+      <span class="dur">1.5주</span>
+    </div>
+    <div class="phase-dates">2026-12-01 → 12-13</div>
+    <span class="job">이 구간의 임무 : 마지막 0.4 kg</span>
+    <div class="phase-goal">58.4 <span class="arrow">→</span> 58.0 <span class="rate">주 0.25 kg</span></div>
+    <p>체지방이 줄수록 감량 속도는 느려진다. 여기서 조급해져서 섭취를 깎으면
+       마지막 순간에 근육을 잃는다. <strong>속도를 늦추는 것이 정상이다.</strong></p>
+    <p>연말 모임이 겹치는 시기다. 외식은 <strong>1/3 정량 · 단백질원 우선</strong> 원칙으로 통과한다.</p>
+  </div>
+</section>
+
+<section>
+  <h2>약물 농도 곡선</h2>
+  <p class="lede">티르제파타이드 반감기 약 5일. 마지막 투여는 8월 24일이었다.
+     1단계의 길이는 이 곡선이 바닥에 닿는 시점으로 정했다.</p>
+
+  <figure class="chart">
+    <svg viewBox="0 0 700 250" role="img" aria-label="티르제파타이드 혈중 농도 감소 곡선. 8월 24일 10.5mg에서 10월 5일 0.03mg까지 감소.">
+      <!-- grid -->
+      <g stroke="var(--rule-2)" stroke-width="1">
+        <line x1="52" y1="30" x2="676" y2="30"/>
+        <line x1="52" y1="76" x2="676" y2="76"/>
+        <line x1="52" y1="122" x2="676" y2="122"/>
+        <line x1="52" y1="168" x2="676" y2="168"/>
+      </g>
+      <line x1="52" y1="200" x2="676" y2="200" stroke="var(--rule)" stroke-width="1.5"/>
+      <!-- y labels -->
+      <g fill="var(--muted)" font-family="JetBrains Mono, monospace" font-size="10.5" text-anchor="end">
+        <text x="44" y="34">10</text>
+        <text x="44" y="80">7.5</text>
+        <text x="44" y="126">5</text>
+        <text x="44" y="172">2.5</text>
+        <text x="44" y="204">0</text>
+      </g>
+      <text x="52" y="16" fill="var(--muted)" font-family="JetBrains Mono, monospace" font-size="10.5">mg</text>
+
+      <!-- decay area + curve : 8/24 peak 10.5 -> 10/5 ~0 -->
+      <path d="M92 8 C 132 96, 168 158, 206 176 C 268 190, 340 197, 420 199 C 520 200, 600 200, 660 200 L 660 200 L 92 200 Z"
+            fill="var(--amber-wash)"/>
+      <path d="M92 8 C 132 96, 168 158, 206 176 C 268 190, 340 197, 420 199 C 520 200, 600 200, 660 200"
+            fill="none" stroke="var(--amber)" stroke-width="2.5" stroke-linecap="round"/>
+
+      <!-- today marker 9/11 = 1.03mg -->
+      <line x1="206" y1="30" x2="206" y2="200" stroke="var(--brick)" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <circle cx="206" cy="176" r="5" fill="var(--brick)"/>
+      <text x="214" y="60" fill="var(--brick)" font-family="JetBrains Mono, monospace" font-size="11.5" font-weight="700">오늘 9/11</text>
+      <text x="214" y="76" fill="var(--brick)" font-family="JetBrains Mono, monospace" font-size="11.5">1.03 mg</text>
+
+      <!-- phase1 end 10/5 -->
+      <line x1="500" y1="140" x2="500" y2="200" stroke="var(--pine)" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <circle cx="500" cy="200" r="4.5" fill="var(--pine)"/>
+      <text x="508" y="152" fill="var(--pine)" font-family="JetBrains Mono, monospace" font-size="11.5" font-weight="700">10/5</text>
+      <text x="508" y="168" fill="var(--pine)" font-family="JetBrains Mono, monospace" font-size="11.5">약효 소멸</text>
+
+      <!-- peak label -->
+      <circle cx="92" cy="8" r="4.5" fill="var(--amber)"/>
+      <text x="100" y="12" fill="var(--amber)" font-family="JetBrains Mono, monospace" font-size="11.5" font-weight="700">10.5 mg</text>
+
+      <!-- x labels -->
+      <g fill="var(--muted)" font-family="JetBrains Mono, monospace" font-size="10.5" text-anchor="middle">
+        <text x="92" y="220">8/24</text>
+        <text x="206" y="220">9/11</text>
+        <text x="348" y="220">9/25</text>
+        <text x="500" y="220">10/5</text>
+        <text x="646" y="220">10/20</text>
+      </g>
+      <text x="92" y="240" fill="var(--muted)" font-family="JetBrains Mono, monospace" font-size="10.5">마지막 투여</text>
+    </svg>
+    <figcaption>
+      삐약 앱 추정치 (반감기 기반 수학 모델). 피크 대비 현재 9.8 % 잔존.
+      이 곡선이 바닥에 닿는 <strong>9월 말~10월 초가 계획 전체의 최대 위험 구간</strong>이다.
+    </figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2>생리주기 연동 전략</h2>
+  <p class="lede">배란일 9/3 확인. 28일 주기 기준으로 계획 기간에 월경이 4회 온다.
+     <strong>난포기엔 밀어붙이고, 황체기엔 버틴다.</strong> 같은 노력이 시기에 따라 다른 결과를 낸다.</p>
+
+  <div class="cyc">
+    <div class="cyc-row">
+      <div class="cyc-lab">9월</div>
+      <div class="cyc-bars">
+        <div class="bar hold"><b>~ 9/17 황체기</b>수분 저류 · 체중 판단 유예</div>
+        <div class="bar push"><b>9/18 ~ 10/1 난포기</b>가장 잘 빠지는 구간. 걸음 10,000</div>
+      </div>
+    </div>
+    <div class="cyc-row">
+      <div class="cyc-lab">10월</div>
+      <div class="cyc-bars">
+        <div class="bar hold"><b>10/2 ~ 10/15 황체기</b>탄수 갈망 ↑ · 단백질 우선 배치</div>
+        <div class="bar push"><b>10/16 ~ 10/29 난포기</b>60 kg 벽 돌파 시도</div>
+      </div>
+    </div>
+    <div class="cyc-row">
+      <div class="cyc-lab">11월</div>
+      <div class="cyc-bars">
+        <div class="bar hold"><b>10/30 ~ 11/12 황체기</b>유지 목표. 정체를 실패로 읽지 않는다</div>
+        <div class="bar push"><b>11/13 ~ 11/26 난포기</b>58 kg대 진입 구간</div>
+      </div>
+    </div>
+    <div class="cyc-row">
+      <div class="cyc-lab">12월</div>
+      <div class="cyc-bars">
+        <div class="bar hold"><b>11/27 ~ 12/10 황체기</b>연말 모임 겹침 · 유지가 성공</div>
+        <div class="bar push"><b>12/11 ~ 난포기</b>목표 도달 예상 구간</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="lede" style="margin-top:16px">
+    황체기엔 프로게스테론의 알도스테론 유사 작용으로 <strong>0.5~2 kg의 수분이 잡힌다.</strong>
+    체중이 안 빠지는 것처럼 보이지만 지방은 계속 빠지고 있다.
+    월경이 시작되면 그 수분이 1~2일 만에 한꺼번에 나간다.
+  </p>
+</section>
+
+<section>
+  <h2>매일 지킬 숫자</h2>
+  <p class="lede">14주 내내 바뀌지 않는 값이다. 걸음 수만 2단계에서 올린다.</p>
+  <div class="rules">
+    <div class="rule"><div class="k">섭취</div><div class="v">1,300–1,400 <span style="font-size:13px;color:var(--muted)">kcal</span></div>
+      <div class="n">실측 기초대사량 1,237 위. 이 아래로 내리지 않는다</div></div>
+    <div class="rule"><div class="k">단백질</div><div class="v">80 <span style="font-size:13px;color:var(--muted)">g</span></div>
+      <div class="n">제지방량 40.1 kg × 2.0 g. 근육 사수의 핵심</div></div>
+    <div class="rule"><div class="k">걸음</div><div class="v">8,000 → 10,000</div>
+      <div class="n">1단계 8,000 · 2단계부터 10,000. 적자를 만드는 주 레버</div></div>
+    <div class="rule"><div class="k">근력</div><div class="v">주 3회</div>
+      <div class="n">세션 A 당기기 / B 밀기 / C 전신. 상체 볼륨 70 %</div></div>
+    <div class="rule"><div class="k">수면</div><div class="v">00:00 – 08:00</div>
+      <div class="n">8시간. 성장호르몬 분비가 근육 사수에 직결</div></div>
+    <div class="rule"><div class="k">수분</div><div class="v">2.0 <span style="font-size:13px;color:var(--muted)">L</span></div>
+      <div class="n">고나트륨 섭취일은 2.5 L</div></div>
+    <div class="rule"><div class="k">섭취 창</div><div class="v">12:00 – 20:00</div>
+      <div class="n">16:8. 단백질·채소 먼저, 탄수화물 나중에</div></div>
+    <div class="rule"><div class="k">체중 측정</div><div class="v">매일 공복</div>
+      <div class="n">기록만 한다. 판단은 7일 이동평균으로만</div></div>
+  </div>
+</section>
+
+<section>
+  <h2>인바디 체크포인트</h2>
+  <p class="lede">이 계획의 합격·불합격은 체중계가 아니라 여기서 판정된다.
+     조건 통일 — 공복 · 배변 후 · 저녁 시간대 · 동일 기기(InBody 270).</p>
+  <div class="tw">
+    <table>
+      <thead>
+        <tr><th>일자</th><th>시점</th><th class="num">체중 예상</th><th class="num">골격근 하한</th><th>합격 조건</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="mono">09-27</td><td>1단계 중반</td><td class="num">61.4</td><td class="num">21.7</td><td>골격근 유지 = 새 프로토콜 작동</td></tr>
+        <tr><td class="mono">10-25</td><td>2단계 중반</td><td class="num">60.2</td><td class="num">21.7</td><td>체지방률 33 %대 진입</td></tr>
+        <tr><td class="mono">11-22</td><td>2단계 후반</td><td class="num">58.9</td><td class="num">21.7</td><td>체지방률 32 % 이하</td></tr>
+        <tr class="mark"><td class="mono">12-20</td><td>최종</td><td class="num">58.0</td><td class="num">21.7</td><td>체지방률 31 % 이하</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="lede" style="margin-top:14px">
+    골격근이 <strong class="mono">21.7 kg</strong> 아래로 내려가면 그 회차는 <strong>불합격</strong>이다.
+    체중이 계획대로 빠졌더라도 마찬가지다. 그때는 섭취를 늘리고 감량 속도를 낮춘다.
+  </p>
+</section>
+
+<section>
+  <h2>위험 구간</h2>
+  <p class="lede">이 네 가지가 계획을 깨는 경로다. 미리 알고 들어간다.</p>
+
+  <div class="risk" style="--sig:var(--brick)">
+    <div class="risk-h"><h3>약효 완전 소실</h3><span class="when">9월 말 ~ 10월 초</span></div>
+    <p>계획 전체에서 <strong>가장 위험한 2주.</strong> 8개월간 받쳐주던 식욕 억제가 사라진다.
+       배고픔이 갑자기 돌아오고, 그걸 의지 부족으로 오해하기 쉽다.</p>
+    <p class="do"><b>대응 →</b> 의지가 아니라 구조로 막는다. 단백질 80 g을 먼저 채우면 배고픔이 줄어든다.
+       고단백 간식(단백질 음료·그릭요거트·계란)을 미리 사둔다. 이 시기에 체중은 보지 않는다.</p>
+  </div>
+
+  <div class="risk" style="--sig:var(--plum)">
+    <div class="risk-h"><h3>황체기 수분 저류</h3><span class="when">매월 약 2주</span></div>
+    <p>월경 전 2주간 체중이 <strong class="mono">0.5~2 kg</strong> 잡힌다. 계획대로 하고 있어도
+       체중계는 정체 또는 상승을 보여준다.</p>
+    <p class="do"><b>대응 →</b> 황체기엔 유지가 성공이다. 7일 이동평균으로만 보고,
+       진짜 판정은 월경 시작 2~3일 후에 한다.</p>
+  </div>
+
+  <div class="risk" style="--sig:var(--amber)">
+    <div class="risk-h"><h3>정체기</h3><span class="when">4 ~ 6주차 · 10월 중순</span></div>
+    <p>체중이 줄면 대사도 함께 내려간다. 같은 섭취·같은 활동으로는 적자가 줄어든다.
+       10월 중순 <strong>60 kg 벽</strong>에서 가장 크게 나타날 가능성이 높다.</p>
+    <p class="do"><b>대응 →</b> 섭취를 깎지 말고 <b>걸음을 10,000 → 12,000</b>으로 올린다.
+       2주 이상 지속되면 그때 재계산한다.</p>
+  </div>
+
+  <div class="risk" style="--sig:var(--amber)">
+    <div class="risk-h"><h3>연말 모임</h3><span class="when">12월</span></div>
+    <p>3단계와 정확히 겹친다. 술과 외식이 몰리는 시기다.</p>
+    <p class="do"><b>대응 →</b> 1/3 정량 원칙 유지, 단 <b>단백질원은 줄이지 않는다.</b>
+       줄이는 것은 탄수화물·소스·튀김이다. 술 마신 다음 날은 걸음으로 회수한다.</p>
+  </div>
+</section>
+
+<section>
+  <div class="verdict">
+    <h2>이 계획의 합격 기준</h2>
+    <ul class="vlist">
+      <li><span class="m">✓</span><div>12월 20일 인바디에서 <strong>체중 58 kg 이하 &amp; 골격근 21.7 kg 이상</strong></div></li>
+      <li><span class="m">✓</span><div><strong>체지방률 31 % 이하</strong> — 시작점 35.2 %에서 4 %p 이상 감소</div></li>
+      <li><span class="m">✓</span><div>10월 5일까지 <strong>약 없이</strong> 섭취·단백질·걸음 기준을 지켜냄</div></li>
+      <li><span class="m x">✗</span><div>체중 58 kg를 찍었으나 <strong>골격근이 21.7 미만</strong> — 같은 숫자, 실패한 몸</div></li>
+      <li><span class="m x">✗</span><div>도중에 <strong>900 kcal 이하로 되돌아감</strong> — 7~8월 패턴 재현. 그 시점에 계획 중단하고 재설계</div></li>
+    </ul>
+  </div>
+</section>
+
+<p class="foot">
+  기준 데이터 — InBody 270 (2026-08-30 20:56) · 삐약 약물 농도 추정 (2026-09-11) ·
+  관리생활 체중 이력 · Apple 건강 활동 기록.<br>
+  체중 기준선은 <code>62.0 kg</code>로 두었다. 9/10 실측 62.6 kg에는 황체기 수분과
+  글리코겐 재적재분이 포함되어 있어 실제 기준선은 이보다 낮다.
+  <strong>9월 20일 이후 첫 측정치로 기준선을 확정하고 이 계획을 보정한다.</strong><br><br>
+  이 문서는 의학적 진단이나 처방이 아니다. 갑상선 기능 검사(TSH · free T4 · T3)를 포함한
+  혈액검사를 한 번 받아볼 것을 권한다 — 실측 기초대사량 1,237 kcal가 표준 범위 아래에 있다.
+</p>
+
+</div>
