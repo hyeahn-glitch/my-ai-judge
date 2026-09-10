@@ -23,6 +23,7 @@ diet/
 ├── INBODY.md              ← 체성분 실측 분석 (모든 추정치에 우선)  [2순위]
 ├── PROTOCOL.md            ← 에이전트 행동 규칙 · 보고서 템플릿     [3순위]
 ├── TRAINING.md            ← 헬스장 근력 프로그램 (주 3회 · 상체 우선)
+├── PRODUCTS.md            ← 라벨 실측 제품 DB (추정치보다 우선)
 ├── logs/
 │   ├── _TEMPLATE.md       ← 하루 기록 양식
 │   └── YYYY-MM-DD.md      ← 일별 식단 · 체중 · 활동 기록
